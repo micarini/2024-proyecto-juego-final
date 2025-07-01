@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, Papel o Tijera</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!--
+    Página de inicio:
+        Incluir un formulario en el que cada jugador ingrese su nombre;
+        El nombre ingresado a partir del punto a. debe aparecer en el encabezado junto al puntaje que irá cambiando durante el juego;
+        Incluir un botón para comenzar a jugar.
+    Diseño de la interfaz:
+        Debe ser visualmente atractiva, y debe poder mostrar o tener un botón para acceder a la explicación clara de cuáles son las instrucciones del juego.
+        Maquetado y diseño:
+        Utilizar HTML5 y CSS3 para un diseño profesional y atractivo;
+        Aplicar animaciones y efectos visuales cuando se pueda.
+    Código limpio y funcional:
+        El código debe estar organizado y cumplir con las buenas prácticas;
+        Respetar la estructura de archivos propuesta durante el desarrollo de las materias;
+        Utilizar todo lo aprendido en clase, integrando Math.random, DOM, arrays u objetos, estructuras condicionales, repetitivas y temporizadores según corresponda.
+        Todo lo que sea un plus a las consignas obligatorias de cada juego, podrá presentarse como una simulación (información que alimenta al juego de forma fija) pero tendrá que estar correctamente programado.
+
+    Juego 3
+    Piedra, Papel o Tijera
+
+    Objetivo
+    Jugar contra la máquina en este clásico juego, acumulando puntos según los resultados.
+
+    Mecánica mínima
+    El jugador elige una de las tres opciones (piedra, papel, tijera);
+    La máquina elige una opción aleatoria;
+    Mostrar un mensaje indicando quién ganó la ronda (jugador o máquina);
+    Si se gana, sumas 10 puntos. Si se pierde, se restan 10 puntos;
+    El juego termina cuando el jugador llega a 200 puntos (gana) o a 0 puntos (pierde).
+
+    Interfaz
+    Mostrar las opciones como imágenes clicables;
+    Indicar los puntos actuales y el progreso hacia la victoria o derrota;
+    Agregar un botón para reiniciar la partida.-->
+</head>
+<body>
+  <!-- Página de inicio -->
+  <div id="start-page" class="page active">
+    <h1 class="uppercase">Piedra, papel o tijera</h1>
+    <form id="player-form">
+      <label for="player-name">Ingresa tu nombre:</label>
+      <input type="text" id="player-name-input" placeholder="Tu nombre" required>
+      <p id="error-message" class="error hidden">El nombre ingresado no es válido</p>
+      <button type="submit" class="uppercase" id="button-start">Start</button>
+    </form>
+  </div>
+
+  <!-- Página del juego -->
+  <div id="game-page" class="page">
+    
+    <header>
+      <h1 class="uppercase">¿Piedra, papel o tijera?</h1>
+      <p id="score">Jugador: <span id="player-name"></span> | Puntos: <span id="player-score"></span></p>
+
+      <div class="header-buttons">
+
+        <button id="exit-button" class="exit-button">Salir</button>
+
+        <button id="instructions-button">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </button>
+
+      </div>
+    </header>
+    
+    <main>
+
+      <div id="game">
+
+          <div id="choices">
+            <img src="assets/img/piedra.webp" alt="Piedra" id="piedra">
+            <img src="assets/img/papel.webp" alt="Papel" id="papel">
+            <img src="assets/img/tijera.webp" alt="Tijera" id="tijera">
+          </div>
+
+          <div id="visual-result" class="hidden">
+            <div class="choice-visual">
+              <p>Vos elegiste:</p>
+              <img id="player-choice-img" src="" alt="Tu elección">
+            </div>
+            <div class="choice-visual">
+              <p>La computadora eligió:</p>
+              <img id="computer-choice-img" src="" alt="Elección de la computadora">
+            </div>
+          </div>
+
+          <p id="result"></p>
+      </div>
+
+      <div id="progress-bar">
+        <div id="progress-fill">
+          <span id="progress-text">100 / 200</span>
+        </div>
+      </div>
+
+
+      <div id="game-over" class="hidden">
+        <p id="game-over-message"></p>
+        <button id="button-restart" class="uppercase">Jugar de nuevo</button>
+      </div>
+
+      <div id="modal" class="modal hidden">
+        <div class="modal-content">
+          <button id="close-modal" class="modal-close">✖</button>
+          <h2>Instrucciones</h2>
+          <p>Selecciona una opción entre piedra, papel o tijera. La computadora también seleccionará una opción al azar. Gana quien tenga la mejor elección según las reglas del juego: </p>
+          <br>
+          <ul>
+            <li>Piedra vence a Tijera</li>
+            <li>Papel vence a Piedra</li>
+            <li>Tijera vence a Papel</li>
+          </ul>
+        </div>
+      </div>
+      
+    </main>
+  </div>
+
+<!--
+que las fotos y todo sean un poco mas chicas, la barra de progreso tambien, y el texto debajo tambien por que se mueve la pagina de lugar sino
+hacer mas visible las elecciones, mostrar el dibujo de lo que elegiste y lo que eligio la computadora
+hacer un modo "claro"
+agregarle sonido al ganar o perder, o al hacer click
+que el modal se cierre a los 5 segundos tambien para que el jugador se de cuenta que tiene que seguir jugando, o tambien agregarlo en las instrucciones por las dudas
+en vez de una cruz en el modal de las instrucciones, que el usuario pueda agree poniendo el ok, o si toca fuera del modal que se cierre tambien
+el responsive de modal de la pagina del juego se ve mal, habria que arreglar:
+el modal de instrucciones 
+el boton de salir y menu hamburguesa que no se vayan con scroll
+el titulo del juego
+la barra de progreso
+las imagenes, quedan como scroll (sino forzar que el jugador juege en horizontal por ahi si es mas simple)-->
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,375 @@
+/*RESET CSS*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+  list-style-type: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: "Play", sans-serif;
+  background-color: #1a1a1a; 
+  color: #ffffff; 
+  line-height: 1.6;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+h1 {
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 2rem;
+  color: #ff0000; 
+  text-shadow: 2px 2px 0 #000000; /* un efecto pixelado */
+  margin-bottom: 20px;
+}
+
+.press-start-2p-regular {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.play-regular {
+  font-family: "Play", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.play-bold {
+  font-family: "Play", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+/*boton de inicio*/
+#button-start {
+  background-color: #ff0000; 
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+#button-start:hover {
+  background-color: #ffffff; 
+  color: #ff0000; 
+}
+
+/*para alternar la visibilidad de la pagina de inicio/juego*/
+.page {
+  display: none; /*se ocultan ambas paginas por defecto*/
+  text-align: center;
+  padding: 20px;
+}
+
+.page.active { /*muestro solo las paginas con la clase active*/
+  display: block;
+}
+
+.error {
+  color: red;
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none; 
+}
+
+#game-over {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1000;
+  display: none; /* oculto inicialmente */
+}
+
+#game-over p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+#game-over button {
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#game-over button:hover {
+  background-color: red;
+}
+
+/* FORM STYLES */
+form {
+  background-color: #333333; /* Gris medio para contraste */
+  border: 3px solid #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+input {
+  font-family: "Play", sans-serif;
+  font-size: 1rem;
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #ffffff;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-radius: 5px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #ff0000;
+}
+
+/* ERROR MESSAGE */
+.error {
+  color: #ff0000;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* GAME PAGE STYLES */
+header {
+  margin-bottom: 20px;
+}
+
+#score {
+  font-family: "Play", sans-serif;
+  font-size: 1.2rem;
+  background-color: #333333;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+/* GAME OPTIONS */
+#choices {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+#choices img {
+  width: 10em;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#choices img:hover {
+  transform: scale(1.1); 
+}
+
+/* RESULT DISPLAY */
+#visual-result.visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.choice-visual {
+  text-align: center;
+}
+
+.choice-visual img {
+  width: 80px;
+  height: auto;
+  margin-top: 10px;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  padding: 5px;
+}
+
+
+/* BUTTON RESTART */
+#button-restart {
+  background-color: transparent;
+  color: #ff0000;
+  border: 2px solid #ff0000;
+  padding: 10px 20px;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 30px;
+  transition: all 0.3s ease;
+}
+
+#button-restart:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  width: 30%; /* Ancho del modal */
+  background-color: #333333; /* Fondo del modal */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: #ffffff; /* Texto blanco */
+  font-family: "Play", sans-serif;
+}
+
+/* BOTÓN X */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  color: gray;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.modal-close:hover {
+  transform: scale(1.2); /* Efecto hover */
+  color: black;
+  background-color: transparent;
+}
+
+.modal.hidden {
+  display: none; /* Oculta el modal cuando tiene la clase hidden */
+}
+
+.modal ul li{
+  list-style-type: square; 
+  list-style-position: inside;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/*barra de progreso*/
+#progress-bar {
+  width: 100%;
+  max-width: 400px;
+  height: 25px;
+  background-color: #333;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  margin: 1rem auto;
+  border: 2px solid #fff;
+}
+
+#progress-fill {
+  height: 100%;
+  width: 50%; /* este se actualizará con JS */
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s ease-in-out;
+}
+
+#progress-text {
+  color: white;
+  font-weight: bold;
+  font-family: 'Play', sans-serif;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+
+/* botón de instrucciones */
+#instructions-button {
+  position: fixed; 
+  top: 1rem; 
+  right: 1rem; 
+  background-color: transparent; 
+  border: none; 
+  padding: 1rem;
+  cursor: pointer; 
+  z-index: 1000; /* me aseguro que esté por encima de otros elementos */
+}
+
+#instructions-button .line {
+  width: 2.5em; 
+  height: 0.4em; 
+  background-color: red; 
+  margin: 5px 0; 
+  border-radius: 2px; 
+}
+
+#instructions-button:hover .line {
+  border: 1px solid #fff; 
+}
+
+/*boton de salida*/
+.exit-button {
+  position: fixed; 
+  top: 1rem; 
+  left: 1rem; 
+  background-color: #ff0000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  padding: 10px 20px;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.exit-button:hover {
+  background-color: #ffffff;
+  color: #ff0000;
+}

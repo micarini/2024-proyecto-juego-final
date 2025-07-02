@@ -1,12 +1,10 @@
 /*para pasar de la pagina de inicio a la de juego y viceversa, y verificación de formulario*/
-
 let startPage = document.getElementById('start-page');
 let gamePage = document.getElementById('game-page');
 let startButton = document.getElementById('button-start');
 let exitButton = document.getElementById('exit-button');
 let backButton = document.getElementById('button-restart');
 let errorMessage = document.getElementById('error-message'); 
-
 
 function showStartPage() { /*funcion para la pagina de inicio*/ 
   startPage.classList.add('active'); // mostrar pag inicio

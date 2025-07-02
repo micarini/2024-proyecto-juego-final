@@ -501,4 +501,8 @@ width: 2em;
 height: 0.2em; 
 }
 
+#instructions-button:hover .line {
+  border: 0.5px solid #fff; 
+}
+
 }

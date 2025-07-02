@@ -41,7 +41,7 @@ startButton.addEventListener('click', function (event) {
 });
 
 /*js del juego mismo*/
-let playerScore = 190; // puntaje inicial del jugador arranca en el medio
+let playerScore = 100; // puntaje inicial del jugador arranca en el medio
 let resultDisplay = document.getElementById('result');
 let playerScoreDisplay = document.getElementById('player-score');
 
@@ -158,7 +158,6 @@ function resetGame() {
   document.getElementById('game-over').style.display = 'none'; // oculto el mensaje de fin del juego
   showStartPage(); // vuelve a la pantalla de inicio
 }
-
 
 // llamo a resetGame()
 backButton.addEventListener('click', resetGame); 

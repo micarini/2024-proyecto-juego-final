@@ -190,7 +190,7 @@ function updateCustomProgressBar() {
   const progressText = document.getElementById('progress-text');
   const percentage = (playerScore / 200) * 100;
 
-  progressFill.style.width = `${percentage}%`;
+  progressFill.style.width = `${percentage}%`; /*updateo el width de la barra que arranca en 50%*/
   progressText.textContent = `${playerScore} / 200`;
 
   /* hago que la barra cambie de color según el puntaje*/

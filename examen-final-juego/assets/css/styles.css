@@ -1,5 +1,4 @@
 /*RESET CSS*/
-
 * {
   margin: 0;
   padding: 0;
@@ -310,8 +309,8 @@ header {
 
 #progress-fill {
   height: 100%;
-  width: 50%; /* este se actualizará con JS */
-  background-color: red;
+  width: 50%; /* se actualiza desde el pero arranco en 50 */
+  background-color: orange;
   display: flex;
   align-items: center;
   justify-content: center;

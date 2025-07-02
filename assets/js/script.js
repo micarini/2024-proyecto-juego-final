@@ -41,7 +41,7 @@ startButton.addEventListener('click', function (event) {
 });
 
 /*js del juego mismo*/
-let playerScore = 100; // puntaje inicial del jugador
+let playerScore = 190; // puntaje inicial del jugador arranca en el medio
 let resultDisplay = document.getElementById('result');
 let playerScoreDisplay = document.getElementById('player-score');
 
@@ -100,12 +100,12 @@ function playRound(playerChoice) {
   
   if (winner === 'player') {
     playerScore += 10;
-    resultDisplay.textContent = "¡Ganaste! Elegiste " + playerChoice + " y la computadora eligió " + computerChoice + ".";
+    resultDisplay.textContent = "¡Ganaste! Segui participando.";
   } else if (winner === 'machine') {
     playerScore -= 10;
-    resultDisplay.textContent = "Perdiste. Elegiste " + playerChoice + " y la computadora eligió " + computerChoice + ".";
+    resultDisplay.textContent = "Perdiste. Segui participando.";
   } else {
-    resultDisplay.textContent = "Empate. Ambos eligieron " + playerChoice + ".";
+    resultDisplay.textContent = "Empate. Segui participando.";
   }
 
   showVisualChoices(playerChoice, computerChoice); 
@@ -127,12 +127,13 @@ function checkGameEnd() {
   let gameOverMessage = document.getElementById('game-over-message');
 
   if (playerScore >= 200) {
-    gameOverMessage.textContent = "¡Felicidades! Llegaste a los 200 puntos y ganaste el juego.";
-    showGameOver();
-  } else if (playerScore <= 0) {
-    gameOverMessage.textContent = 'Tu puntaje llegó a 0. Perdiste el juego.';
-    showGameOver();
-  }
+  gameOverMessage.innerHTML = `<strong>¡GANASTE!</strong><span>Llegaste a los 200 puntos y ganaste el juego.</span>`;
+  showGameOver();
+} else if (playerScore <= 0) {
+  gameOverMessage.innerHTML = `<strong>PERDISTE</strong><span>Tu puntaje llegó a 0. Mejor suerte la próxima.</span>`;
+  showGameOver();
+}
+
 }
 
 function showGameOver() {
@@ -168,20 +169,35 @@ function showModal() {
   modal.classList.remove("hidden"); // funcion para abrir el modal
 }
 
-
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.querySelector('.modal');
-  const closeButton = document.querySelector('.modal-close');
+  const modalContent = document.querySelector('.modal-content');
+  const closeButton = document.getElementById('close-modal');
+  const closeButtonOk = document.getElementById('okclose-modal');
   const instructionsButton = document.getElementById("instructions-button");
 
+  // cerrar modal con botón OK
+  closeButtonOk.addEventListener('click', function () {
+    modal.classList.add('hidden');
+  });
+
+  //al hacer click en la x tambien se cierra el modal de instrucciones
   closeButton.addEventListener('click', function() {
     modal.classList.add('hidden');
-  }); //al hacer click en la x se cierra el modal de instrucciones
+  }); 
 
+  // y tambien se cierra el modal al hacer click fuera del contenido
+  modal.addEventListener('click', function (event) {
+    if (!modalContent.contains(event.target)) {
+      modal.classList.add('hidden');
+    }
+  });
 
-  startButton.addEventListener("click", showModal); // muestro el modal al iniciar el juego (ya habia llamado al boton start al principio del js)
+  // botones que abren el modal
   instructionsButton.addEventListener("click", showModal); // permito que se pueda abrir el modal con el botón de instrucciones
+  startButton.addEventListener("click", showModal); // muestro el modal al iniciar el juego (ya habia llamado al boton start al principio del js)
 });
+
 
 function updateCustomProgressBar() {
   const progressFill = document.getElementById('progress-fill');

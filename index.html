@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piedra, Papel o Tijera</title>
+    <link rel="icon" href="assets/img/joystick.png" type="image/png">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,24 +79,29 @@
 
       <div id="game">
 
+          <div id="visual-result" class="hidden">
+            <div class="choice-visual">
+              <p>Vos elegiste:</p>
+              <div class="image-box">
+                <img id="player-choice-img" src="" alt="Tu elección">
+              </div>
+            </div>
+            <div class="choice-visual">
+              <p>La computadora eligió:</p>
+              <div class="image-box">
+                <img id="computer-choice-img" src="" alt="Elección de la computadora">
+              </div>    
+            </div>
+          </div>
+
+          <p id="result"></p>
+
           <div id="choices">
             <img src="assets/img/piedra.webp" alt="Piedra" id="piedra">
             <img src="assets/img/papel.webp" alt="Papel" id="papel">
             <img src="assets/img/tijera.webp" alt="Tijera" id="tijera">
           </div>
 
-          <div id="visual-result" class="hidden">
-            <div class="choice-visual">
-              <p>Vos elegiste:</p>
-              <img id="player-choice-img" src="" alt="Tu elección">
-            </div>
-            <div class="choice-visual">
-              <p>La computadora eligió:</p>
-              <img id="computer-choice-img" src="" alt="Elección de la computadora">
-            </div>
-          </div>
-
-          <p id="result"></p>
       </div>
 
       <div id="progress-bar">
@@ -113,6 +119,7 @@
       <div id="modal" class="modal hidden">
         <div class="modal-content">
           <button id="close-modal" class="modal-close">✖</button>
+
           <h2>Instrucciones</h2>
           <p>Selecciona una opción entre <b>piedra</b>, <b>papel</b> o <b>tijera</b> haciendo clic en la imagen correspondiente. Tu elección se comparará con la de la computadora, que seleccionará una <b>opción al azar</b>. Gana quien tenga la mejor elección según las reglas del juego:</p> 
           <br>
@@ -121,6 +128,9 @@
             <li>Papel vence a Piedra</li>
             <li>Tijera vence a Papel</li>
           </ul>
+
+          <button id="okclose-modal" class="modal-ok">OK</button>
+
         </div>
       </div>
       
@@ -129,16 +139,19 @@
 
 <!--
 agregarle sonido al ganar o perder, o al hacer click
-que el modal se cierre a los 5 segundos tambien para que el jugador se de cuenta que tiene que seguir jugando, o tambien agregarlo en las instrucciones por las dudas
-en vez de una cruz en el modal de las instrucciones, que el usuario pueda agree poniendo el ok, o si toca fuera del modal que se cierre tambien
-el responsive de modal de la pagina del juego se ve mal en version mobile (en tablet esta bien), habria que arreglar:
+
+que la parte de result display se cierre a los 5 segundos tambien para que el jugador se de cuenta que tiene que seguir jugando, o tambien agregarlo en las instrucciones por las dudas
+
+el menu hamburguesa y de salir estan como fixed in place y la pagina tiene scroll creo entonces se va el titulo y no se mantiene bien fijo tambien 
+
+responsive: 
+el responsive de modal de la pagina del juego se ve mal en version mobile (en tablet esta bien)
 el modal de instrucciones 
 el boton de salir y menu hamburguesa que no se vayan con scroll
 el titulo del juego
 la barra de progreso
 las imagenes, quedan como scroll (sino forzar que el jugador juege en horizontal por ahi si es mas simple)
-agregar mini icono de imagen arriba para el buscador
-cartel de ganaste o perdiste, sacar transparencia y que aparezca PERDISTE o GANASTE en grande y luego la mini explicacion-->
+-->
 
     <script src="assets/js/script.js"></script>
   </body>

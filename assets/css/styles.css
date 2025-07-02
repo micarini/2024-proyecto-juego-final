@@ -98,36 +98,56 @@ h1 {
   display: none; 
 }
 
+/*GAME OVER CUANDO GANA O PIERDE*/
 #game-over {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #111; /* Fondo oscuro sólido */
   color: white;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 40px 30px;
+  border: 4px solid darkred; /* Borde estilo retro */
+  border-radius: 12px;
   text-align: center;
   z-index: 1000;
-  display: none; /* oculto inicialmente */
+  max-width: 90%;
+  width: 420px;
+  display: none;
+  font-family: 'Press Start 2P', cursive;
+  box-shadow: 0 0 10px darkred;
 }
 
-#game-over p {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+#game-over-message strong {
+  display: block;
+  font-size: 1.8rem;
+  color: red;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 0 black;
+}
+
+#game-over-message span {
+  font-size: 0.8rem;
+  color: white;
+  line-height: 1.4;
 }
 
 #game-over button {
-  padding: 10px 20px;
+  margin-top: 30px;
+  padding: 14px 24px;
+  font-size: 0.9rem;
+  font-weight: bold;
   background-color: red;
   color: white;
-  border: none;
-  border-radius: 5px;
+  border: 3px solid darkred;
+  border-radius: 6px;
   cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
 }
 
 #game-over button:hover {
-  background-color: red;
+  background-color: darkred;
 }
 
 /* FORM STYLES */
@@ -203,23 +223,33 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 40px;
   margin-top: 20px;
+  gap: 20px;
 }
 
 .choice-visual {
   text-align: center;
+  padding: 10px;
 }
 
-.choice-visual img {
-  width: 80px;
-  height: auto;
-  margin-top: 10px;
-  border: 2px solid #fff;
+.image-box {
+  display: flex;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border: 2px solid white;
   border-radius: 10px;
-  background-color: #1a1a1a;
-  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  background-color: #111;
 }
+
+.image-box img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
 
 
 /* BUTTON RESTART */
@@ -268,14 +298,14 @@ header {
 /* BOTÓN X */
 .modal-close {
   position: absolute;
-  top: 1rem;
   right: 1rem;
   background: transparent;
   color: gray;
   border: none;
+  padding: 8px 14px;
   font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s; 
 }
 
 .modal-close:hover {
@@ -293,6 +323,21 @@ header {
   list-style-position: inside;
   text-align: center;
   margin-bottom: 10px;
+}
+
+.modal-ok {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2ecc71;
+  color: white;
+  cursor: pointer;
+}
+.modal-ok:hover {
+  background-color: #27ae60;
 }
 
 /* BARRA DE PROGRESO */
@@ -371,4 +416,89 @@ header {
 .exit-button:hover {
   background-color: #ffffff;
   color: #ff0000;
+}
+
+
+/*MEDIA QUERIES PARA RESPONSIVE EN MOBILE*/
+
+@media (max-width: 768px) {
+/* modal (instrucciones + game over) */
+#game-over {
+  width: 90%;
+  padding: 20px 15px;
+  font-size: 0.8rem;
+}
+
+.modal-content {
+  width: 90%;
+}
+
+.modal-close {
+  font-size: 0.8rem;
+}
+
+.modal-ok {
+  padding: 8px 14px;
+}
+
+/* Header fijo para que botón salir + menú hamburguesa no se vayan */
+header {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  z-index: 999;
+}
+
+.header-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/*le achico el tamaño al titulo*/
+h1 {
+  font-size: 1.2rem;
+}
+
+/*cambio su width y height*/
+#progress-bar {
+  width: 90%;
+  display: block;
+  height: 16px;
+}
+
+/* lo encolumno para que no haya overflow */
+#visual-result {
+  flex-direction: column;
+  align-items: center;
+}
+
+.choice-visual {
+  width: 100%;
+}
+
+.image-box { /*achico un poco la caja de las imagenes*/
+  width: 100px;
+  height: 100px;
+}
+
+#result {
+  margin: 2em;
+}
+
+/* botones */
+#choices img {
+  width: 5em;
+}
+
+#exit-button {
+  padding: 6px 12px;
+  font-size: 0.75rem;
+}
+
+#instructions-button .line {
+width: 2em; 
+height: 0.2em; 
+}
+
 }
